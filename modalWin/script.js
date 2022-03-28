@@ -36,3 +36,16 @@ for (let i = 0; i < btnsOpenModal.length; i++) {
   btnsCloseModal.addEventListener("click", closeModal);
   overlay.addEventListener("click", closeModal);
 }
+
+// HANDLING ESC KEY EVENT
+
+document.addEventListener("keydown", function (event) {
+  //   console.log("a key was pressed");
+  console.log(event.key);
+
+  if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+    // if (!modal.classList.contains("hidden")) {
+    closeModal();
+    // }
+  }
+});
