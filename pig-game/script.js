@@ -1,9 +1,15 @@
 "use strict";
 // Selecting elements
-const score0El = document.querySelector("#score--0");
+const player0El = document.querySelector(".player--0"); // class: player--0 and player--1
+const player1El = document.querySelector(".player--1");
+
+// selecting by IDs
+const score0El = document.getElementById("score--0");
 const score1El = document.getElementById("score--1");
 const current0El = document.getElementById("current--0");
 const current1El = document.getElementById("current--1");
+
+// selecting by class
 const diceEl = document.querySelector(".dice");
 const btnNew = document.querySelector(".btn--new");
 const btnRoll = document.querySelector(".btn--roll");
@@ -33,8 +39,15 @@ btnRoll.addEventListener("click", function () {
   if (dice !== 1) {
     // add dice to the current score
     currentScore += dice;
-    current0El.textContent = currentScore; // change later
+    document.getElementById(`current--${activePlayer}`).textContent =
+      currentScore;
+    // current0El.textContent = currentScore; // change later
   } else {
     // switch to other player
+    document.getElementById(`current--${activePlayer}`).textContent = 0;
+    currentScore = 0;
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    player0El.classList.toggle("player--active");
+    player1El.classList.toggle("player--active");
   }
 });
